@@ -757,15 +757,15 @@ public class ChakNode {
 
         System.out.println("ChakNode port: "+c.getPort());
 
-        System.out.println("\nEnter a command:" +
-                "\n\thelp to view all options"+
-                "\n\t0 to join network" +
-                "\n\t1 to print neighbors" +
-                "\n\t2 'someFileName' to create a new file with name: 'someFileName'" +
-                "\n\t3 'someFileName' to search for a file with name: 'someFileName'" +
-                "\n\t4 to list all files on this node"+
-                "\n\t5 'someFileName' to read a file with name: 'someFileName'" +
-                "\n\texit to terminate the program\n");
+        System.out.println("\nEnter a command\n" +
+                "\n\thelp: to view all options"+
+                "\n\t0: to join network" +
+                "\n\t1: to print neighbors" +
+                "\n\t2 'someFileName': to create a new file with name: 'someFileName'" +
+                "\n\t3 'someFileName': to search for a file with name: 'someFileName'" +
+                "\n\t4: to list all files on this node"+
+                "\n\t5 'someFileName': to read a file with name: 'someFileName'" +
+                "\n\texit to terminate the program and remove the node from the network\n");
 
         while(!(input = scanner.next()).equals("exit")) {
 
@@ -803,14 +803,14 @@ public class ChakNode {
                     }
                     break;
                 default:
-                    System.out.println("\nEnter a command:" +
-                            "\n\thelp to view all options"+
-                            "\n\t0 to join network" +
-                            "\n\t1 to print neighbors" +
-                            "\n\t2 'someFileName' to create a new file with name: 'someFileName'" +
-                            "\n\t3 'someFileName' to search for a file with name: 'someFileName'" +
-                            "\n\t4 to list all files on this node"+
-                            "\n\t5 'someFileName' to read a file with name: 'someFileName'" +
+                    System.out.println("\nEnter a command\n" +
+                            "\n\thelp: to view all options"+
+                            "\n\t0: to join network" +
+                            "\n\t1: to print neighbors" +
+                            "\n\t2 'someFileName': to create a new file with name: 'someFileName'" +
+                            "\n\t3 'someFileName': to search for a file with name: 'someFileName'" +
+                            "\n\t4: to list all files on this node"+
+                            "\n\t5 'someFileName': to read a file with name: 'someFileName'" +
                             "\n\texit to terminate the program and remove the node from the network\n");
                     break;
             }

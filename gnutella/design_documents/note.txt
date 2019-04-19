@@ -1,0 +1,2 @@
+To properly view the javadocs make sure to open the index.html file in
+your browser of choice!

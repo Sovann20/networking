@@ -32,17 +32,18 @@ public class ChakNodeNetworkSimulator {
             Scanner scan = new Scanner(System.in);
             String input;
 
-            System.out.println("Enter a command:" +
-                    "\n\thelp to view all options"+
-                    "\n\t0 'portNumber1' 'portNumber2' to ping a port number 'portNumber2' from 'portNumber1'" +
-                    "\n\t1 to print neighbors of each node" +
-                    "\n\t2 'someFileName' 'portNumber' to create a new file with name 'someFileName' on a node with 'portNumber" +
-                    "\n\t3 'someFileName' 'portNumber' to start a search for a file 'someFileName' on a node with 'portNumber'" +
-                    "\n\t4 'portNumber' to list all files on a node with a port number 'portNumber'"+
-                    "\n\t5 'someFileName' 'portNumber' to search for a file with a name 'someFileName' on a node with 'portNumber'" +
-                    "\n\t6 'portNumber' to add a node with a port 'portNumber'" +
-                    "\n\tkill 'portNumber' to kill and remove a node from the network with the port number 'portNumber'"+
-                    "\n\texit to terminate the program\n");
+            System.out.println("\nEnter a command\n" +
+                    "\n\thelp: to view all options"+
+                    "\n\t0 'portNumber1' 'portNumber2': to ping a port number 'portNumber2' from 'portNumber1'" +
+                    "\n\t1: to print neighbors of each node" +
+                    "\n\t2 'someFileName' 'portNumber': to create a new file with name 'someFileName' on a node with 'portNumber" +
+                    "\n\t3 'someFileName' 'portNumber': to start a search for a file 'someFileName' on a node with 'portNumber'" +
+                    "\n\t4 'portNumber': to list all files on a node with a port number 'portNumber'"+
+                    "\n\t5 'someFileName' 'portNumber': to read a file with a name 'someFileName' on a node with 'portNumber'" +
+                    "\n\t6 'portNumber': to add a node with a port 'portNumber'" +
+                    "\n\t7 'portNumber': to print the neighbors of a single node"+
+                    "\n\tkill 'portNumber': to kill and remove a node from the network with the port number 'portNumber'"+
+                    "\n\texit: to terminate the program\n");
 
             input = scan.next();
             boolean enter = true;
@@ -66,7 +67,7 @@ public class ChakNodeNetworkSimulator {
                         break;
                     case "1":
                         for(ChakNode node : nodes.values()) {
-                            System.out.print(node.getPort());
+                            System.out.print(node.getPort()+" - ");
                             node.printNeighbors();
                         }
                         break;
@@ -113,11 +114,22 @@ public class ChakNodeNetworkSimulator {
                             System.out.println("Invalid port number or port already exists.");
                         }
                         break;
+                    case "7":
+                        try {
+                            int port = scan.nextInt();
+                            System.out.print(nodes.get(port).getPort()+" - ");
+                            nodes.get(port).printNeighbors();
+
+                        } catch (Exception e) {
+                            System.out.println("Invalid port.");
+                        }
+                        break;
                     case "kill":
                         try {
                             int port = scan.nextInt();
                             nodes.get(port).kill();
                             nodes.remove(port);
+                            System.out.println("The node was killed on your behalf, your majesty.");
                         } catch (Exception e) {
                             System.out.println("Invalid port number.");
                         }
@@ -126,16 +138,18 @@ public class ChakNodeNetworkSimulator {
                         enter = false;
                         break;
                     default:
-                        System.out.println("\nEnter a command:" +
-                                "\n\thelp to view all options"+
-                                "\n\t0 'portNumber1' 'portNumber2' to ping a port number 'portNumber2' from 'portNumber1'" +
-                                "\n\t1 to print neighbors of each node" +
-                                "\n\t2 'someFileName' 'portNumber' to create a new file with name 'someFileName' on a node with 'portNumber" +
-                                "\n\t3 'someFileName' 'portNumber' to start a search for a file 'someFileName' on a node with 'portNumber'" +
-                                "\n\t4 'portNumber' to list all files on a node with a port number 'portNumber'"+
-                                "\n\t5 'someFileName' 'portNumber' to search for a file with a name 'someFileName' on a node with 'portNumber'" +
-                                "\n\tkill 'portNumber' to kill and remove a node from the network with the port number 'portNumber'"+
-                                "\n\texit to terminate the program\n");
+                        System.out.println("\nEnter a command\n" +
+                                "\n\thelp: to view all options"+
+                                "\n\t0 'portNumber1' 'portNumber2': to ping a port number 'portNumber2' from 'portNumber1'" +
+                                "\n\t1: to print neighbors of each node" +
+                                "\n\t2 'someFileName' 'portNumber': to create a new file with name 'someFileName' on a node with 'portNumber" +
+                                "\n\t3 'someFileName' 'portNumber': to start a search for a file 'someFileName' on a node with 'portNumber'" +
+                                "\n\t4 'portNumber': to list all files on a node with a port number 'portNumber'"+
+                                "\n\t5 'someFileName' 'portNumber': to read a file with a name 'someFileName' on a node with 'portNumber'" +
+                                "\n\t6 'portNumber': to add a node with a port 'portNumber'" +
+                                "\n\t7 'portNumber': to print the neighbors of a single node"+
+                                "\n\tkill 'portNumber': to kill and remove a node from the network with the port number 'portNumber'"+
+                                "\n\texit: to terminate the program\n");
                         break;
                 }
                 if(enter) {
